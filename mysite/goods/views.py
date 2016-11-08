@@ -29,3 +29,6 @@ def roll_dice(request, goods_id):
         'dice_result': dice_result,
     }
     return render(request, 'goods/goods_detail.html', ctx)
+
+def member_join(request):
+    return render(request, 'goods/member_join.html')
