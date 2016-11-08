@@ -49,7 +49,7 @@
         {% for goods in goods_list %}
         <div>
             <img src="{{ goods.image.url }}" />
-            <h2><a href="{% url 'goods:detail' goods.id %}">{{ goods.goods_text }}</a></h2>
+            <h2><a href="{% url 'goods:goods_detail' goods.id %}">{{ goods.goods_text }}</a></h2>
         </div>
         {% endfor %}
         {% else %}

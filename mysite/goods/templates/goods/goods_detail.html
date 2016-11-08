@@ -1,0 +1,18 @@
+
+<h1>{{ goods.goods_text }} </h1>
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <img src="{{ goods.image.url }}" />
+    <br />
+    <input type="button" value="메인으로" onClick="location.href='{% url 'goods:index' %}'" />
+    <input type="button" value="Try Dice" onClick="location.href='{% url 'goods:roll_dice' goods.id %}'" />
+</body>
+</html>

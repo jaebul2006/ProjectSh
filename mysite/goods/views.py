@@ -14,9 +14,9 @@ def index(request):
     }
     return render(request, 'goods/index.html', context)
 
-def detail(request, goods_id):
+def goods_detail(request, goods_id):
     goods = Goods.objects.get(pk=goods_id)
-    return render(request, 'goods/detail.html', {'goods': goods})
+    return render(request, 'goods/goods_detail.html', {'goods': goods})
 
 def test(request):
     if request.method=="GET":
@@ -28,4 +28,4 @@ def roll_dice(request, goods_id):
     ctx = {
         'dice_result': dice_result,
     }
-    return render(request, 'goods/detail.html', ctx)
+    return render(request, 'goods/goods_detail.html', ctx)
