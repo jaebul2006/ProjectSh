@@ -10,6 +10,8 @@
 <head>
 </head>
 <body>
-    <input type="button" value="메인으로" onClick="" />
+    <img src="{{ question.image.url }}" />
+    <input type="button" value="메인으로" onClick="location.href='{% url 'polls:index' %}'" />
+    <input type="button" value="Try Dice" onClick="location.href='{% url 'polls:roll_dice' question.id %}'" />
 </body>
 </html>

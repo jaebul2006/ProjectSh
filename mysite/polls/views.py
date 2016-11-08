@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.urls import reverse
 from django.shortcuts import redirect
 
+from .models import Goods
 from .models import Question
 from .forms import PollForm
 
@@ -37,3 +38,11 @@ def create_poll(request):
 def test(request):
     if request.method=="GET":
         return JsonResponse({"a":"Hello?", "b":"Good", "c":"Bad"})
+
+def roll_dice(request, goods_id):
+    goods_page = Goods.objects.get(pk=goods_id)
+    dice_result = -1
+    ctx = {
+        'dice_result': dice_result,
+    }
+    return render(request, 'polls/detail.html', ctx)
