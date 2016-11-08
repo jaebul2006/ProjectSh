@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.urls import reverse
 from django.shortcuts import redirect
 
@@ -8,7 +8,7 @@ from .forms import PollForm
 
 
 def index(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    latest_question_list = Question.objects.order_by('-pub_date')#[:5]
     context = {
         'latest_question_list': latest_question_list,
     }
@@ -33,3 +33,7 @@ def create_poll(request):
         'form': form,
     }
     return render(request, 'polls/create_poll.html', ctx)
+
+def test(request):
+    if request.method=="GET":
+        return JsonResponse({"a":"Hello?", "b":"Good", "c":"Bad"})

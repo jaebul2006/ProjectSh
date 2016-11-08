@@ -42,7 +42,7 @@
 <script src="{% static 'polls/js/jquery.vgrid.min.js' %}"></script>
 
 <body>
-<h1>한번만 도와주쏘</h1>
+<h1>Test</h1>
     <div id="container">
         {% if latest_question_list %}
         {% for question in latest_question_list %}
@@ -61,6 +61,23 @@
                 delay:30,
                 wait:500
         });
+    </script>
+    <p>Test 결과: <span id="result"></span></p>
+    <input type="button" id="excute" value="excute" />
+    <script>
+        $('#excute').click(function(){
+            $.ajax({
+                url:'http://localhost:8000/polls/test',
+                type:'get',
+                success:function(data){
+                    var str = '';
+                    for(var name in data){
+                        str += '<li>'+data[name]+'<li>';
+                    }
+                    $('#result').html('<ul>'+str+'</ul>');
+                }
+            })
+        })
     </script>
 </body>
 
